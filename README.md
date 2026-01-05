@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Real-Time IPO Information AI
 
 A production-ready AI system that tracks Indian IPOs, predicts listing gains, and recommends application categories.
@@ -71,3 +72,6 @@ GET /ipo?name=Swiggy
 
 ## Note on Scraper
 The scraper is configured to target a generic structure resembling popular IPO portals. If the target website changes its layout, update `parse_ipo_data` in `scraper/ipo_scraper.py`.
+=======
+# ipo-ai-ajant2
+>>>>>>> 3baabc90c8d877def4b2b6f1d3ed540cd6b9d515
