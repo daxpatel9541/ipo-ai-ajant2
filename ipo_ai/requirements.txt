@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlalchemy
+pandas
+scikit-learn
+requests
+beautifulsoup4
+apscheduler
+joblib
+selenium
+webdriver-manager
+pyyaml

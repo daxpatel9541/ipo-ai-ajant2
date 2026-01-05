@@ -1,0 +1,14 @@
+# Configuration file for IPO data sites
+# Add site names and URLs below
+
+sites:
+  - name: "NSE India (National Stock Exchange)"
+    url: "https://www.nseindia.com/"
+  - name: "BSE India"
+    url: "https://www.bseindia.com/"
+  - name: "Chittorgarh IPO"
+    url: "https://www.chittorgarh.com/report/ipo-in-india-list-main-board-sme/82/"
+  - name: "IPO Watch"
+    url: "https://ipowatch.in/ipo/"
+  - name: "Investorgain"
+    url: "https://www.investorgain.com/ipo/"

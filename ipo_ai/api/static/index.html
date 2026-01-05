@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO AI Intelligence</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #22d3ee;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.1rem;
+            background-color: var(--card-bg);
+            border: 2px solid #334155;
+            border-radius: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        button.search-btn {
+            position: absolute;
+            right: 0.75rem;
+            top: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        button.search-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        #results {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: left;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .ipo-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            background-color: rgba(34, 211, 238, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            background-color: #0f172a;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1px solid #334155;
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .ai-analysis {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.05));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .ai-explanation {
+            line-height: 1.6;
+            color: #dbeafe;
+        }
+
+        .disclaimer {
+            margin-top: 2rem;
+            color: #64748b;
+            font-size: 0.75rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            color: var(--accent);
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>IPO AI Agent</h1>
+        <p class="subtitle">Real-Time Intelligence & Listing Gain Predictions</p>
+
+        <div class="search-box">
+            <input type="text" id="ipoInput" placeholder="Enter IPO Name (e.g. Swiggy)..."
+                onkeypress="handleEnter(event)">
+            <button class="search-btn" onclick="searchIPO()">Analyze</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">Analyzing market data...</div>
+
+        <div id="results">
+            <div class="result-card">
+                <div class="header-row">
+                    <span class="ipo-title" id="r_name">IPO Name</span>
+                    <span class="status-badge" id="r_status">Upcoming</span>
+                </div>
+
+                <div class="grid">
+                    <div class="stat-item">
+                        <span class="stat-label">GMP</span>
+                        <div class="stat-value" id="r_gmp">₹0</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Price High</span>
+                        <div class="stat-value" id="r_price">₹0</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Issue Size</span>
+                        <div class="stat-value" id="r_size">0 Cr</div>
+                    </div>
+                </div>
+
+                <div class="ai-analysis">
+                    <div class="ai-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        AI Prediction
+                    </div>
+                    <div class="grid" style="margin-bottom: 1rem;">
+                        <div>
+                            <span class="stat-label">Predicted Gain</span>
+                            <div class="stat-value" style="color: #4ade80;" id="r_gain">0%</div>
+                        </div>
+                        <div>
+                            <span class="stat-label">Recommendation</span>
+                            <div class="stat-value" style="color: var(--accent);" id="r_cat">-</div>
+                        </div>
+                    </div>
+                    <p class="ai-explanation" id="r_expl">AI analysis will appear here.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="disclaimer">This is AI-based analysis, not financial advice.</p>
+    </div>
+
+    <script>
+        function handleEnter(e) {
+            if (e.key === 'Enter') searchIPO();
+        }
+
+        async function searchIPO() {
+            const name = document.getElementById('ipoInput').value;
+            if (!name) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+
+            try {
+                const response = await fetch(`/ipo?name=${encodeURIComponent(name)}`);
+                if (!response.ok) throw new Error('IPO not found');
+
+                const data = await response.json();
+
+                // Update UI
+                document.getElementById('r_name').textContent = data.ipo_details.name;
+                document.getElementById('r_status').textContent = data.ipo_details.status;
+                document.getElementById('r_gmp').textContent = `₹${data.ipo_details.current_gmp}`;
+                document.getElementById('r_price').textContent = `₹${data.ipo_details.price_band_high}`;
+                document.getElementById('r_size').textContent = `${data.ipo_details.issue_size} Cr`;
+
+                document.getElementById('r_gain').textContent = data.ai_analysis.predicted_gain || 'N/A';
+                document.getElementById('r_cat').textContent = data.ai_analysis.recommended_category || 'N/A';
+                document.getElementById('r_expl').textContent = data.ai_analysis.ai_explanation;
+
+                document.getElementById('results').style.display = 'block';
+            } catch (error) {
+                alert("IPO not found in database. Try another name or wait for the scraper.");
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

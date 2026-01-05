@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Real-Time Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass);
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .ipo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .ipo-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ipo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .ipo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), #c084fc);
+        }
+
+        .ipo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .ipo-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            max-width: 70%;
+        }
+
+        .ipo-status {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .status-upcoming {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .status-listed {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .ipo-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item .label {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .detail-item .value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .update-time {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-align: right;
+        }
+
+        #loading {
+            text-align: center;
+            padding: 5rem;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        /* Glassmorphism Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">IPO BOT AI</div>
+            <div class="status-badge">
+                <div class="dot"></div>
+                Bot Live & Processing
+            </div>
+        </header>
+
+        <div class="stats-grid" id="stats-container">
+            <div class="stat-card">
+                <div class="stat-label">Total IPOs</div>
+                <div class="stat-value" id="stat-total">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Upcoming</div>
+                <div class="stat-value" id="stat-upcoming">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Listed</div>
+                <div class="stat-value" id="stat-listed">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Last Bot Heartbeat</div>
+                <div class="stat-value" id="stat-last-sync" style="font-size: 1rem;">-</div>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 2rem;">Real-Time IPO Stream</h2>
+        <div id="loading">Initializing real-time connection...</div>
+        <div class="ipo-grid" id="ipo-grid"></div>
+    </div>
+
+    <script>
+        async function fetchData() {
+            try {
+                // Fetch Stats
+                const statsRes = await fetch('/api/stats');
+                const stats = await statsRes.json();
+                document.getElementById('stat-total').innerText = stats.total_ipos;
+                document.getElementById('stat-upcoming').innerText = stats.upcoming;
+                document.getElementById('stat-listed').innerText = stats.listed;
+                document.getElementById('stat-last-sync').innerText = stats.last_sync ? new Date(stats.last_sync).toLocaleTimeString() : 'Never';
+
+                // Fetch IPOs
+                const ipoRes = await fetch('/api/ipos');
+                const ipos = await ipoRes.json();
+
+                const grid = document.getElementById('ipo-grid');
+                const loading = document.getElementById('loading');
+
+                loading.style.display = 'none';
+                grid.innerHTML = '';
+
+                ipos.forEach(ipo => {
+                    const card = document.createElement('div');
+                    card.className = 'ipo-card';
+                    card.innerHTML = `
+                        <div class="ipo-header">
+                            <div class="ipo-name">${ipo.ipo_name}</div>
+                            <div class="ipo-status status-${ipo.status}">${ipo.status}</div>
+                        </div>
+                        <div class="ipo-details">
+                            <div class="detail-item">
+                                <span class="label">Issue Size</span>
+                                <span class="value">${ipo.issue_size ? '₹' + ipo.issue_size + ' Cr' : 'N/A'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Price High</span>
+                                <span class="value">${ipo.price_high ? '₹' + ipo.price_high : 'N/A'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">GMP</span>
+                                <span class="value">${ipo.gmp ? '₹' + ipo.gmp : '₹0'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Listing Gain</span>
+                                <span class="value" style="color: ${ipo.listing_gain > 0 ? 'var(--success)' : 'inherit'}">${ipo.listing_gain ? ipo.listing_gain + '%' : 'N/A'}</span>
+                            </div>
+                        </div>
+                        <div class="update-time">Synced: ${new Date(ipo.scraped_at).toLocaleTimeString()}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error("Dashboard update failed:", err);
+            }
+        }
+
+        // Poll every 5 seconds for real-time feel
+        setInterval(fetchData, 5000);
+        fetchData();
+    </script>
+</body>
+
+</html>

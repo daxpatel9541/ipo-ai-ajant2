@@ -1,0 +1,237 @@
+IPO Name: ICICI Securities, Issue Size: 0.0, Price: 520.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.227381
+IPO Name: Apollo Micro Systems, Issue Size: 0.0, Price: 275.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.227141
+IPO Name: Aster DM Healthcare, Issue Size: 0.0, Price: 190.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.226858
+IPO Name: Hindustan Aeronautics, Issue Size: 0.0, Price: 1215.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.226607
+IPO Name: Bharat Dynamics, Issue Size: 0.0, Price: 428.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.226343
+IPO Name: Newgen Software, Issue Size: 0.0, Price: 245.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.226078
+IPO Name: Galaxy Surfactants, Issue Size: 0.0, Price: 1480.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.225804
+IPO Name: Karda Construction, Issue Size: 0.0, Price: 180.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.225545
+IPO Name: Sandhar Technologies, Issue Size: 0.0, Price: 332.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.225290
+IPO Name: H.G. Infra, Issue Size: 0.0, Price: 270.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.224998
+IPO Name: Amber Enterprises, Issue Size: 0.0, Price: 859.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.224756
+IPO Name: Bandhan Bank, Issue Size: 0.0, Price: 375.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.224501
+IPO Name: Lemon Tree Hotels, Issue Size: 0.0, Price: 56.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.224242
+IPO Name: Mishra Dhatu Nigam, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.223939
+IPO Name: Indostar Capital, Issue Size: 0.0, Price: 572.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.223657
+IPO Name: RITES, Issue Size: 0.0, Price: 185.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.223384
+IPO Name: Fine Organics, Issue Size: 0.0, Price: 783.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.223114
+IPO Name: Varroc, Issue Size: 0.0, Price: 967.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.222802
+IPO Name: TCNS, Issue Size: 0.0, Price: 716.0, Status: upcoming, Scraped At: 2026-01-05 04:29:55.222495
+IPO Name: Pace E-Commerce Ventures Ltd. IPO, Issue Size: 0.0, Price: 103.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.323487
+IPO Name: Vedant Asset Ltd. IPO, Issue Size: 0.0, Price: 40.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.323211
+IPO Name: Phantom Digital Effects Ltd. IPO, Issue Size: 0.0, Price: 95.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.322936
+IPO Name: Rite Zone Chemcon India Ltd. IPO, Issue Size: 0.0, Price: 75.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.322680
+IPO Name: Integrated Personnel Services Ltd. IPO, Issue Size: 0.0, Price: 59.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.322421
+IPO Name: DAPS Advertising Ltd. IPO, Issue Size: 0.0, Price: 30.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.322161
+IPO Name: Vital Chemtech Ltd. IPO, Issue Size: 0.0, Price: 101.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.321839
+IPO Name: Amiable Logistics (India) Ltd. IPO, Issue Size: 0.0, Price: 81.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.320827
+IPO Name: Technopack Polymers Ltd. IPO, Issue Size: 0.0, Price: 55.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.320560
+IPO Name: AMBO Agritec Ltd. IPO, Issue Size: 0.0, Price: 30.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.320293
+IPO Name: Pritika Engineering Components Ltd. IPO, Issue Size: 0.0, Price: 29.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.320029
+IPO Name: Baheti Recycling Industries Ltd. IPO, Issue Size: 0.0, Price: 45.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.319753
+IPO Name: Arham Technologies Ltd. IPO, Issue Size: 0.0, Price: 42.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.319497
+IPO Name: PNGS Gargi Fashion Jewellery Ltd. IPO, Issue Size: 0.0, Price: 30.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.319241
+IPO Name: All E Technologies Ltd. IPO, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.318958
+IPO Name: Droneacharya Aerial Innovations Ltd. IPO, Issue Size: 0.0, Price: 54.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.318701
+IPO Name: Dollex Agrotech Ltd. IPO, Issue Size: 0.0, Price: 35.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.318442
+IPO Name: Uma Converter Ltd. IPO, Issue Size: 0.0, Price: 33.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.318171
+IPO Name: Arihant Academy Ltd. IPO, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.317841
+IPO Name: Moxsh Overseas Educon Ltd. IPO, Issue Size: 0.0, Price: 153.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.317581
+IPO Name: Homesfy Realty Ltd. IPO, Issue Size: 0.0, Price: 197.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.317298
+IPO Name: RBM Infracon Ltd. IPO, Issue Size: 0.0, Price: 36.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.316970
+IPO Name: Anlon Technology Solutions Ltd. IPO, Issue Size: 0.0, Price: 100.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.316355
+IPO Name: Rex Sealing & Packing Industries Ltd. IPO, Issue Size: 0.0, Price: 135.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.316055
+IPO Name: SVS Ventures Ltd. IPO, Issue Size: 0.0, Price: 20.0, Status: upcoming, Scraped At: 2026-01-05 04:29:44.315683
+IPO Name: Aether Industries Ltd. IPO, Issue Size: 0.0, Price: 642.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.085910
+IPO Name: Syrma SGS Technology Ltd. IPO, Issue Size: 0.0, Price: 220.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.085644
+IPO Name: Dreamfolks Services Ltd. IPO, Issue Size: 0.0, Price: 326.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.085381
+IPO Name: Tamilnad Mercantile Bank Ltd. IPO, Issue Size: 0.0, Price: 510.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.085111
+IPO Name: Harsha Engineers International Ltd. IPO, Issue Size: 0.0, Price: 330.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.084812
+IPO Name: Electronics Mart India Ltd. IPO, Issue Size: 0.0, Price: 59.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.084532
+IPO Name: Tracxn Technologies Ltd. IPO, Issue Size: 0.0, Price: 80.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.084240
+IPO Name: DCX Systems Ltd. IPO, Issue Size: 0.0, Price: 207.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.083940
+IPO Name: Fusion Micro Finance Ltd. IPO, Issue Size: 0.0, Price: 368.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.083689
+IPO Name: Global Health Ltd. IPO, Issue Size: 0.0, Price: 336.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.083440
+IPO Name: Bikaji Foods International Ltd. IPO, Issue Size: 0.0, Price: 300.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.083176
+IPO Name: Five-Star Business Finance Ltd. IPO, Issue Size: 0.0, Price: 474.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.082859
+IPO Name: Archean Chemical Industries Ltd. IPO, Issue Size: 0.0, Price: 407.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.082619
+IPO Name: Kaynes Technology India Ltd. IPO, Issue Size: 0.0, Price: 587.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.082382
+IPO Name: Inox Green Energy Services Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.082123
+IPO Name: Keystone Realtors Ltd. IPO, Issue Size: 0.0, Price: 541.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.081834
+IPO Name: Dharmaj Crop Guard Ltd. IPO, Issue Size: 0.0, Price: 237.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.081567
+IPO Name: Uniparts India Ltd. IPO, Issue Size: 0.0, Price: 577.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.081313
+IPO Name: Sula Vineyards Ltd. IPO, Issue Size: 0.0, Price: 357.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.081055
+IPO Name: Abans Holdings Ltd. IPO, Issue Size: 0.0, Price: 270.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.080779
+IPO Name: Landmark Cars Ltd. IPO, Issue Size: 0.0, Price: 506.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.080509
+IPO Name: KFin Technologies Ltd. IPO, Issue Size: 0.0, Price: 366.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.080260
+IPO Name: Elin Electronics Ltd. IPO, Issue Size: 0.0, Price: 247.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.079970
+IPO Name: Radiant Cash Management Services Ltd. IPO, Issue Size: 0.0, Price: 94.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.079675
+IPO Name: Sah Polymers Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:29:38.079253
+IPO Name: Deepak Chemtex Ltd. IPO, Issue Size: 0.0, Price: 80.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.067168
+IPO Name: Net Avenue Technologies Ltd. IPO, Issue Size: 0.0, Price: 18.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.066904
+IPO Name: Marinetrans India Ltd. IPO, Issue Size: 0.0, Price: 26.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.066665
+IPO Name: Graphisads Ltd. IPO, Issue Size: 0.0, Price: 111.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.066427
+IPO Name: Sheetal Universal Ltd. IPO, Issue Size: 0.0, Price: 70.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.066184
+IPO Name: Accent Microcell Ltd. IPO, Issue Size: 0.0, Price: 140.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.065925
+IPO Name: Presstonic Engineering Ltd. IPO, Issue Size: 0.0, Price: 72.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.065684
+IPO Name: S J Logistics (India) Ltd. IPO, Issue Size: 0.0, Price: 125.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.065442
+IPO Name: Shree OSFM E-Mobility Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.065199
+IPO Name: Siyaram Recycling Industries Ltd. IPO, Issue Size: 0.0, Price: 46.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.064942
+IPO Name: Benchmark Computer Solutions Ltd. IPO, Issue Size: 0.0, Price: 66.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.064699
+IPO Name: Sahara Maritime Ltd. IPO, Issue Size: 0.0, Price: 81.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.064460
+IPO Name: Electro Force (India) Ltd. IPO, Issue Size: 0.0, Price: 93.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.064220
+IPO Name: Shanti Spintex Ltd. IPO, Issue Size: 0.0, Price: 70.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.063962
+IPO Name: Indifra Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.063720
+IPO Name: Supreme Power Equipment Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.063483
+IPO Name: Trident Techlabs Ltd. IPO, Issue Size: 0.0, Price: 35.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.063241
+IPO Name: Sameera Agro & Infra Ltd. IPO, Issue Size: 0.0, Price: 180.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.062980
+IPO Name: AIK Pipes & Polymers Ltd. IPO, Issue Size: 0.0, Price: 89.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.062739
+IPO Name: Akanksha Power & Infrastructure Ltd. IPO, Issue Size: 0.0, Price: 55.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.062502
+IPO Name: HRH Next Services Ltd. IPO, Issue Size: 0.0, Price: 36.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.062258
+IPO Name: Manoj Ceramic Ltd. IPO, Issue Size: 0.0, Price: 62.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.061994
+IPO Name: Shri Balaji Valve Components Ltd. IPO, Issue Size: 0.0, Price: 100.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.061748
+IPO Name: Kay Cee Energy & Infra Ltd. IPO, Issue Size: 0.0, Price: 54.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.061495
+IPO Name: Kaushalya Logistics Ltd. IPO, Issue Size: 0.0, Price: 75.0, Status: upcoming, Scraped At: 2026-01-05 04:29:21.061228
+IPO Name: Valiant Laboratories Ltd. IPO, Issue Size: 0.0, Price: 140.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.497636
+IPO Name: Plaza Wires Ltd. IPO, Issue Size: 0.0, Price: 54.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.497357
+IPO Name: IRM Energy Ltd. IPO, Issue Size: 0.0, Price: 505.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.497086
+IPO Name: Blue Jet Healthcare Ltd. IPO, Issue Size: 0.0, Price: 346.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.496776
+IPO Name: Cello World Ltd. IPO, Issue Size: 0.0, Price: 648.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.496291
+IPO Name: Honasa Consumer Ltd. IPO, Issue Size: 0.0, Price: 324.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.496002
+IPO Name: ESAF Small Finance Bank Ltd. IPO, Issue Size: 0.0, Price: 60.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.495746
+IPO Name: Protean eGov Technologies Ltd. IPO, Issue Size: 0.0, Price: 792.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.495492
+IPO Name: ASK Automotive Ltd. IPO, Issue Size: 0.0, Price: 282.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.495218
+IPO Name: Indian Renewable Energy Development Agency Ltd. IPO (IREDA IPO), Issue Size: 0.0, Price: 32.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.494919
+IPO Name: Gandhar Oil Refinery (India) Ltd. IPO, Issue Size: 0.0, Price: 169.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.494670
+IPO Name: Fedbank Financial Services Ltd. IPO, Issue Size: 0.0, Price: 140.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.494403
+IPO Name: Flair Writing Industries Ltd. IPO, Issue Size: 0.0, Price: 304.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.494115
+IPO Name: Tata Technologies Ltd. IPO, Issue Size: 0.0, Price: 500.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.493804
+IPO Name: India Shelter Finance Corp.Ltd. IPO, Issue Size: 0.0, Price: 493.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.493457
+IPO Name: DOMS Industries Ltd. IPO, Issue Size: 0.0, Price: 790.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.492960
+IPO Name: Inox India Ltd. IPO, Issue Size: 0.0, Price: 660.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.492634
+IPO Name: Suraj Estate Developers Ltd. IPO, Issue Size: 0.0, Price: 360.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.491887
+IPO Name: Muthoot Microfin Ltd. IPO, Issue Size: 0.0, Price: 291.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.491284
+IPO Name: Motisons Jewellers Ltd. IPO, Issue Size: 0.0, Price: 55.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.489959
+IPO Name: RBZ Jewellers Ltd. IPO, Issue Size: 0.0, Price: 100.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.489626
+IPO Name: Happy Forgings Ltd. IPO, Issue Size: 0.0, Price: 850.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.489048
+IPO Name: Credo Brands Marketing Ltd. IPO, Issue Size: 0.0, Price: 280.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.488741
+IPO Name: Azad Engineering Ltd. IPO, Issue Size: 0.0, Price: 524.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.488433
+IPO Name: Innova Captab Ltd. IPO, Issue Size: 0.0, Price: 448.0, Status: upcoming, Scraped At: 2026-01-05 04:29:14.488105
+IPO Name: Mangal Compusolution Ltd. IPO, Issue Size: 0.0, Price: 45.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.068537
+IPO Name: Onyx Biotec Ltd. IPO, Issue Size: 0.0, Price: 61.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.068284
+IPO Name: Lamosaic India Ltd. IPO, Issue Size: 0.0, Price: 200.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.068028
+IPO Name: C2C Advanced Systems Ltd. IPO, Issue Size: 0.0, Price: 226.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.067776
+IPO Name: Rajesh Power Services Ltd. IPO, Issue Size: 0.0, Price: 335.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.067520
+IPO Name: Rajputana Biodiesel Ltd. IPO, Issue Size: 0.0, Price: 130.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.067256
+IPO Name: Abha Power & Steel Ltd. IPO, Issue Size: 0.0, Price: 75.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.066989
+IPO Name: Apex Ecotech Ltd. IPO, Issue Size: 0.0, Price: 73.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.066739
+IPO Name: Agarwal Toughened Glass India Ltd. IPO, Issue Size: 0.0, Price: 108.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.066482
+IPO Name: Ganesh Infraworld Ltd. IPO, Issue Size: 0.0, Price: 83.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.066228
+IPO Name: Nisus Finance Services Co.Ltd. IPO, Issue Size: 0.0, Price: 180.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.065964
+IPO Name: Emerald Tyre Manufacturers Ltd. IPO, Issue Size: 0.0, Price: 95.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.065723
+IPO Name: Dhanlaxmi Crop Science Ltd. IPO, Issue Size: 0.0, Price: 55.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.065469
+IPO Name: Toss The Coin Ltd. IPO, Issue Size: 0.0, Price: 182.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.065191
+IPO Name: Jungle Camps India Ltd. IPO, Issue Size: 0.0, Price: 72.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.064930
+IPO Name: Supreme Facility Management Ltd. IPO, Issue Size: 0.0, Price: 76.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.064678
+IPO Name: Purple United Sales Ltd. IPO, Issue Size: 0.0, Price: 126.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.064417
+IPO Name: Yash Highvoltage Ltd. IPO, Issue Size: 0.0, Price: 146.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.064132
+IPO Name: Hamps Bio Ltd. IPO, Issue Size: 0.0, Price: 51.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.063870
+IPO Name: NACDAC Infrastructure Ltd. IPO, Issue Size: 0.0, Price: 35.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.063605
+IPO Name: Identical Brains Studios Ltd. IPO, Issue Size: 0.0, Price: 54.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.063156
+IPO Name: Newmalayalam Steel Ltd. IPO, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.062898
+IPO Name: Anya Polytech & Fertilizers Ltd. IPO, Issue Size: 44.8, Price: 14.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.062626
+IPO Name: Citichem India Ltd. IPO, Issue Size: 12.6, Price: 70.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.062357
+IPO Name: Technichem Organics Ltd. IPO, Issue Size: 25.25, Price: 55.0, Status: upcoming, Scraped At: 2026-01-05 04:28:59.062054
+IPO Name: Godavari Biorefineries Ltd. IPO, Issue Size: 0.0, Price: 352.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.006854
+IPO Name: Afcons Infrastructure Ltd. IPO, Issue Size: 0.0, Price: 463.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.006589
+IPO Name: Sagility India Ltd. IPO, Issue Size: 0.0, Price: 30.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.006322
+IPO Name: Swiggy Ltd. IPO, Issue Size: 0.0, Price: 390.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.006035
+IPO Name: ACME Solar Holdings Ltd. IPO, Issue Size: 0.0, Price: 289.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.005773
+IPO Name: Niva Bupa Health Insurance Co.Ltd. IPO, Issue Size: 0.0, Price: 74.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.005511
+IPO Name: Zinka Logistics Solutions Ltd. IPO, Issue Size: 0.0, Price: 273.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.005242
+IPO Name: NTPC Green Energy Ltd. IPO, Issue Size: 0.0, Price: 108.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.004959
+IPO Name: Enviro Infra Engineers Ltd. IPO, Issue Size: 0.0, Price: 148.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.004656
+IPO Name: Suraksha Diagnostic Ltd. IPO, Issue Size: 0.0, Price: 441.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.004142
+IPO Name: Vishal Mega Mart Ltd. IPO, Issue Size: 0.0, Price: 78.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.003877
+IPO Name: Sai Life Sciences Ltd. IPO, Issue Size: 0.0, Price: 549.0, Status: upcoming, Scraped At: 2026-01-05 04:28:52.003511
+IPO Name: One Mobikwik Systems Ltd. IPO, Issue Size: 0.0, Price: 279.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.915026
+IPO Name: Inventurus Knowledge Solutions Ltd. IPO, Issue Size: 0.0, Price: 1329.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.914745
+IPO Name: International Gemmological Institute (India) Ltd. IPO, Issue Size: 0.0, Price: 417.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.914432
+IPO Name: Transrail Lighting Ltd. IPO, Issue Size: 838.91, Price: 432.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.914065
+IPO Name: DAM Capital Advisors Ltd. IPO, Issue Size: 840.25, Price: 283.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.909180
+IPO Name: Mamata Machinery Ltd. IPO, Issue Size: 0.0, Price: 243.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.908911
+IPO Name: Sanathan Textiles Ltd. IPO, Issue Size: 0.0, Price: 321.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.908659
+IPO Name: Concord Enviro Systems Ltd. IPO, Issue Size: 0.0, Price: 701.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.908407
+IPO Name: Ventive Hospitality Ltd. IPO, Issue Size: 1600.0, Price: 643.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.908048
+IPO Name: Senores Pharmaceuticals Ltd. IPO, Issue Size: 582.11, Price: 391.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.907776
+IPO Name: Carraro India Ltd. IPO, Issue Size: 1250.0, Price: 704.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.907494
+IPO Name: Unimech Aerospace & Manufacturing Ltd. IPO, Issue Size: 500.0, Price: 785.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.907165
+IPO Name: Indo Farm Equipment Ltd. IPO, Issue Size: 260.15, Price: 215.0, Status: upcoming, Scraped At: 2026-01-05 04:28:51.906862
+IPO Name: K.V.Toys India Ltd. IPO, Issue Size: 0.0, Price: 239.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.048082
+IPO Name: Prodocs Solutions Ltd. IPO, Issue Size: 0.0, Price: 138.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.047801
+IPO Name: Riddhi Display Equipments Ltd. IPO, Issue Size: 0.0, Price: 100.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.047509
+IPO Name: Unisem Agritech Ltd. IPO, Issue Size: 0.0, Price: 65.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.047067
+IPO Name: Shipwaves Online Ltd. IPO, Issue Size: 0.0, Price: 12.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.045916
+IPO Name: Pajson Agro India Ltd. IPO, Issue Size: 0.0, Price: 118.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.045535
+IPO Name: HRS Aluglaze Ltd. IPO, Issue Size: 0.0, Price: 96.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.044905
+IPO Name: Stanbik Agro Ltd. IPO, Issue Size: 0.0, Price: 30.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.043758
+IPO Name: Exim Routes Ltd. IPO, Issue Size: 0.0, Price: 88.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.042701
+IPO Name: Ashwini Container Movers Ltd. IPO, Issue Size: 0.0, Price: 142.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.042457
+IPO Name: Neptune Logitek Ltd. IPO, Issue Size: 0.0, Price: 126.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.042125
+IPO Name: Global Ocean Logistics India Ltd. IPO, Issue Size: 0.0, Price: 78.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.040601
+IPO Name: MARC Technocrats Ltd. IPO, Issue Size: 0.0, Price: 93.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.039856
+IPO Name: Phytochem Remedies (India) Ltd. IPO, Issue Size: 0.0, Price: 0.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.039545
+IPO Name: EPW India Ltd. IPO, Issue Size: 0.0, Price: 97.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.039236
+IPO Name: Dachepalli Publishers Ltd. IPO, Issue Size: 0.0, Price: 102.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.038887
+IPO Name: Shyam Dhani Industries Ltd. IPO, Issue Size: 38.49, Price: 70.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.038555
+IPO Name: Sundrex Oil Co.Ltd. IPO, Issue Size: 32.24, Price: 86.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.038146
+IPO Name: Dhara Rail Projects Ltd. IPO, Issue Size: 50.2, Price: 126.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.037831
+IPO Name: Nanta Tech Ltd. IPO, Issue Size: 31.81, Price: 220.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.037524
+IPO Name: Admach Systems Ltd. IPO, Issue Size: 42.6, Price: 239.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.037177
+IPO Name: Bai Kakaji Polymers Ltd. IPO, Issue Size: 105.17, Price: 186.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.036793
+IPO Name: Apollo Techno Industries Ltd. IPO, Issue Size: 47.96, Price: 130.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.036261
+IPO Name: E to E Transportation Infrastructure Ltd. IPO, Issue Size: 84.22, Price: 174.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.035946
+IPO Name: Modern Diagnostic & Research Centre Ltd. IPO P, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-05 04:28:36.035515
+IPO Name: Rubicon Research Ltd. IPO, Issue Size: 0.0, Price: 485.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.119638
+IPO Name: Canara HSBC Life Insurance Co.Ltd. IPO, Issue Size: 0.0, Price: 106.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.119373
+IPO Name: Midwest Ltd. IPO, Issue Size: 0.0, Price: 1065.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.119087
+IPO Name: Orkla India Ltd. IPO, Issue Size: 0.0, Price: 730.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.118847
+IPO Name: Studds Accessories Ltd. IPO, Issue Size: 0.0, Price: 585.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.118604
+IPO Name: Lenskart Solutions Ltd. IPO, Issue Size: 0.0, Price: 402.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.118346
+IPO Name: Billionbrains Garage Ventures Ltd. IPO (Groww IPO), Issue Size: 0.0, Price: 100.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.118039
+IPO Name: Pine Labs Ltd. IPO, Issue Size: 0.0, Price: 221.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.117750
+IPO Name: Emmvee Photovoltaic Power Ltd. IPO, Issue Size: 0.0, Price: 217.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.117488
+IPO Name: PhysicsWallah Ltd. IPO, Issue Size: 0.0, Price: 109.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.117133
+IPO Name: Tenneco Clean Air India Ltd. IPO, Issue Size: 0.0, Price: 397.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.116821
+IPO Name: Fujiyama Power Systems Ltd. IPO, Issue Size: 0.0, Price: 228.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.116565
+IPO Name: Capillary Technologies India Ltd. IPO, Issue Size: 0.0, Price: 577.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.116319
+IPO Name: Excelsoft Technologies Ltd. IPO, Issue Size: 0.0, Price: 120.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.116042
+IPO Name: Sudeep Pharma Ltd. IPO, Issue Size: 0.0, Price: 593.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.115775
+IPO Name: Meesho Ltd. IPO, Issue Size: 0.0, Price: 111.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.115510
+IPO Name: Aequs Ltd. IPO, Issue Size: 0.0, Price: 124.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.115241
+IPO Name: Vidya Wires Ltd. IPO, Issue Size: 0.0, Price: 52.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.114915
+IPO Name: Wakefit Innovations Ltd. IPO, Issue Size: 0.0, Price: 195.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.108978
+IPO Name: Corona Remedies Ltd. IPO, Issue Size: 0.0, Price: 1062.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.108707
+IPO Name: Nephrocare Health Services Ltd. IPO, Issue Size: 0.0, Price: 460.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.108428
+IPO Name: Park Medi World Ltd. IPO, Issue Size: 0.0, Price: 162.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.108085
+IPO Name: ICICI Prudential Asset Management Co.Ltd. IPO (ICICI Prudential AMC IPO), Issue Size: 0.0, Price: 2165.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.107804
+IPO Name: KSH International Ltd. IPO, Issue Size: 0.0, Price: 384.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.107532
+IPO Name: Gujarat Kidney & Super Speciality Ltd. IPO, Issue Size: 250.8, Price: 114.0, Status: upcoming, Scraped At: 2026-01-05 04:28:29.107188
+IPO Name: Victory Electric Vehicles International Ltd. IPO, Issue Size: 0.0, Price: 41.0, Status: upcoming, Scraped At: 2026-01-05 04:28:07.582719
+IPO Name: Defrail Technologies Ltd. IPO, Issue Size: 0.0, Price: 0.0, Status: upcoming, Scraped At: 2026-01-05 04:28:07.582176
+IPO Name: Gabion Technologies India Ltd. IPO, Issue Size: 29.16, Price: 81.0, Status: upcoming, Scraped At: 2026-01-05 04:10:42.699109
+IPO Name: Yajur Fibres Ltd. IPO, Issue Size: 120.41, Price: 174.0, Status: upcoming, Scraped At: 2026-01-05 04:10:42.696926
+IPO Name: Meesho Ltd., Issue Size: 0.0, Price: 111.0, Status: listed, Scraped At: 2026-01-05 04:10:42.652360
+IPO Name: Luxury Time Ltd., Issue Size: 0.0, Price: 82.0, Status: listed, Scraped At: 2026-01-05 04:10:42.649772
+IPO Name: Exato Technologies Ltd., Issue Size: 0.0, Price: 140.0, Status: listed, Scraped At: 2026-01-05 04:10:42.647898
+IPO Name: ICICI Prudential Asset Management Co.Ltd., Issue Size: 10602.65, Price: 2165.0, Status: listed, Scraped At: 2026-01-05 04:10:42.645997
+IPO Name: Gujarat Kidney & Super Speciality Ltd., Issue Size: 250.8, Price: 114.0, Status: listed, Scraped At: 2026-01-05 04:10:42.643884
+IPO Name: Shyam Dhani Industries Ltd., Issue Size: 38.49, Price: 70.0, Status: listed, Scraped At: 2026-01-05 04:10:42.638715
+IPO Name: Dhara Rail Projects Ltd., Issue Size: 50.2, Price: 126.0, Status: listed, Scraped At: 2026-01-05 04:10:42.626790
+IPO Name: Nanta Tech Ltd., Issue Size: 31.81, Price: 220.0, Status: listed, Scraped At: 2026-01-05 04:10:42.624714
+IPO Name: Admach Systems Ltd., Issue Size: 42.6, Price: 239.0, Status: listed, Scraped At: 2026-01-05 04:10:42.622548
+IPO Name: Bai Kakaji Polymers Ltd., Issue Size: 105.17, Price: 186.0, Status: listed, Scraped At: 2026-01-05 04:10:42.619892
+IPO Name: Apollo Techno Industries Ltd., Issue Size: 47.96, Price: 130.0, Status: listed, Scraped At: 2026-01-05 04:10:42.616360
+IPO Name: E to E Transportation Infrastructure Ltd. IPO LT, Issue Size: 0.0, Price: 174.0, Status: upcoming, Scraped At: 2026-01-02 06:57:15.438392
+IPO Name: Modern Diagnostic & Research Centre Ltd. IPO CT, Issue Size: 0.0, Price: 90.0, Status: upcoming, Scraped At: 2026-01-02 06:57:15.438097
+IPO Name: Modern Diagnostic & Research Centre Ltd. IPO, Issue Size: 36.89, Price: 90.0, Status: listed, Scraped At: 2026-01-01 10:47:44.073197
