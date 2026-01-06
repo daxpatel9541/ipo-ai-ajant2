@@ -10,3 +10,4 @@ joblib
 selenium
 webdriver-manager
 pyyaml
+jinja2

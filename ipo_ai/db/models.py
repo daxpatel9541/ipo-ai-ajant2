@@ -20,6 +20,7 @@ class IPOMaster(Base):
     issue_size = Column(Float, nullable=True)
     price_high = Column(Float, nullable=True)
     listing_gain = Column(Float, nullable=True)
+    listing_date = Column(DateTime, nullable=True)
     best_category = Column(String, nullable=True) # Retail, HNI, QIB
     status = Column(String, default="upcoming") # stored as string for simplicity
     scraped_at = Column(DateTime, default=datetime.utcnow)

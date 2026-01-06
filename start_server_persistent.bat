@@ -15,7 +15,7 @@ cd /d "%~dp0"
 
 :restart
 echo [%date% %time%] Starting server...
-python main.py
+"C:/Users/admin/Downloads/ipo ai agent 2/.venv/Scripts/python.exe" main.py
 
 echo.
 echo [%date% %time%] Server stopped. Restarting in 5 seconds...

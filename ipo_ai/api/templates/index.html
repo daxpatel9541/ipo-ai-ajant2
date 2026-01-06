@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO AI Agent</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #22d3ee;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .search-section {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-section input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.1rem;
+            background-color: var(--card-bg);
+            border: 2px solid #334155;
+            border-radius: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-section input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .search-section button {
+            position: absolute;
+            right: 0.75rem;
+            top: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .search-section button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .ipo-list {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .ipo-card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .ipo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .ipo-card.listed {
+            border-left: 4px solid #22c55e;
+        }
+
+        .ipo-card.upcoming {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .ipo-card h2 {
+            margin: 0 0 1rem 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .status-badge {
+            background-color: rgba(34, 211, 238, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .field {
+            background-color: #0f172a;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+        }
+
+        .field label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .field span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .highlight {
+            color: var(--accent) !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IPO AI Agent</h1>
+        <p class="subtitle">Real-Time Intelligence & Listing Gain Predictions</p>
+
+        <div class="filter-buttons">
+            <button class="filter-btn" onclick="filterIPOs('listed')">Listed IPOs</button>
+            <button class="filter-btn" onclick="filterIPOs('upcoming')">Upcoming IPOs</button>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="ipoInput" placeholder="Enter IPO Name (e.g. Swiggy)..." onkeypress="handleEnter(event)">
+            <button onclick="searchIPO()">Analyze</button>
+        </div>
+        <div id="ipoResults"></div>
+        
+        <!-- IPO List Section -->
+        <div id="ipoList" class="ipo-list"></div>
+    </div>
+    <script>
+        // Global variables
+        let currentActiveButton = null;
+
+        // Handle Enter key press in search input
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                searchIPO();
+            }
+        }
+
+        // Filter IPOs by status
+        async function filterIPOs(status) {
+            try {
+                // Update active button
+                if (currentActiveButton) {
+                    currentActiveButton.classList.remove('active');
+                }
+                event.target.classList.add('active');
+                currentActiveButton = event.target;
+
+                // Clear previous results
+                document.getElementById('ipoResults').innerHTML = '';
+                const ipoListDiv = document.getElementById('ipoList');
+                ipoListDiv.innerHTML = '<div class="loading">Loading IPOs...</div>';
+                ipoListDiv.style.display = 'block';
+
+                // Fetch IPOs from API
+                const response = await fetch(`/api/ipos?status=${status}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const ipos = await response.json();
+                
+                if (ipos.length === 0) {
+                    ipoListDiv.innerHTML = '<div class="loading">No IPOs found for this status.</div>';
+                    return;
+                }
+
+                // Render IPO cards
+                ipoListDiv.innerHTML = ipos.map(ipo => createIPOCard(ipo, status)).join('');
+                
+            } catch (error) {
+                console.error('Error filtering IPOs:', error);
+                document.getElementById('ipoList').innerHTML = '<div class="loading">Error loading IPOs. Please try again.</div>';
+            }
+        }
+
+        // Create IPO card HTML
+        function createIPOCard(ipo, status) {
+            const statusClass = status === 'listed' ? 'listed' : 'upcoming';
+            
+            return `
+                <div class="ipo-card ${statusClass}">
+                    <h2>${ipo.ipo_name}</h2>
+                    <span class="status-badge">${ipo.status}</span>
+                    
+                    <div class="grid">
+                        <div class="field">
+                            <label>GMP</label>
+                            <span>${ipo.gmp || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>Price High</label>
+                            <span>${ipo.price_high || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>Issue Size</label>
+                            <span>${ipo.issue_size || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>Retail Subscription</label>
+                            <span>${ipo.retail_subscription || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>HNI Subscription</label>
+                            <span>${ipo.hni_subscription || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>QIB Subscription</label>
+                            <span>${ipo.qib_subscription || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>Listing Gain</label>
+                            <span class="highlight">${ipo.listing_gain || 'N/A'}</span>
+                        </div>
+                        <div class="field">
+                            <label>Best Category</label>
+                            <span>${ipo.best_category || 'N/A'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Search for IPO by name
+        async function searchIPO() {
+            const ipoInput = document.getElementById('ipoInput');
+            const ipoName = ipoInput.value.trim();
+            
+            if (!ipoName) {
+                alert('Please enter an IPO name to search.');
+                return;
+            }
+
+            // Clear filter button active state
+            if (currentActiveButton) {
+                currentActiveButton.classList.remove('active');
+                currentActiveButton = null;
+            }
+
+            // Hide IPO list and show search results
+            document.getElementById('ipoList').style.display = 'none';
+            const resultsDiv = document.getElementById('ipoResults');
+            resultsDiv.innerHTML = '<div class="loading">Searching for IPO...</div>';
+
+            try {
+                const response = await fetch(`/api/ipos?name=${encodeURIComponent(ipoName)}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data || data.length === 0) {
+                    resultsDiv.innerHTML = '<div class="loading">IPO not found. Please check the name and try again.</div>';
+                    return;
+                }
+
+                // Display search result
+                resultsDiv.innerHTML = `
+                    <div class="section">
+                        <h3>Search Result for "${ipoName}"</h3>
+                        ${data.map(ipo => createIPOCard(ipo, ipo.status)).join('')}
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error searching IPO:', error);
+                resultsDiv.innerHTML = '<div class="loading">Error searching for IPO. Please try again.</div>';
+            }
+        }
+    </script>
+</body>
+</html>

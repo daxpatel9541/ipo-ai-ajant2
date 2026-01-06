@@ -16,16 +16,18 @@ def sync_all_sources():
     
     db = SessionLocal()
     try:
-        # 1. Sync historical_data.json
-        historical_path = os.path.join(os.path.dirname(__file__), "..", "scraper", "historical_data.json")
-        sync_json_file(db, historical_path)
+        # DISABLED: Historical and cached data loading to ensure only real scraped data
+        # The scraper now handles all data updates in real-time
         
-        # 2. Sync cached_data.json
-        cached_path = os.path.join(os.path.dirname(__file__), "..", "scraper", "cached_data.json")
-        sync_json_file(db, cached_path)
+        # 1. Sync historical_data.json - DISABLED (contains mock/historical data)
+        # historical_path = os.path.join(os.path.dirname(__file__), "..", "scraper", "historical_data.json")
+        # sync_json_file(db, historical_path)
         
-        db.commit()
-        logger.info("Synchronization complete.")
+        # 2. Sync cached_data.json - DISABLED (contains mock data)
+        # cached_path = os.path.join(os.path.dirname(__file__), "..", "scraper", "cached_data.json")
+        # sync_json_file(db, cached_path)
+        
+        logger.info("Synchronization complete - only real scraped data will be used.")
     except Exception as e:
         logger.error(f"Error during synchronization: {e}")
         db.rollback()

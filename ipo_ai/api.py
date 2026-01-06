@@ -21,7 +21,25 @@ app.add_middleware(
 def get_ipos(db: Session = Depends(get_db)):
     """Fetch all IPO records from the database, sorted by date."""
     ipos = db.query(IPOMaster).order_by(IPOMaster.scraped_at.desc()).all()
-    return ipos
+    
+    # Return ALL IPO details, excluding only internal database fields
+    result = []
+    for ipo in ipos:
+        result.append({
+            "ipo_name": ipo.ipo_name,
+            "status": ipo.status,
+            "gmp": ipo.gmp if ipo.gmp is not None else 0,
+            "price_high": ipo.price_high if ipo.price_high is not None else None,
+            "issue_size": ipo.issue_size if ipo.issue_size is not None else None,
+            "retail_subscription": ipo.retail_sub if ipo.retail_sub is not None else None,
+            "hni_subscription": ipo.hni_sub if ipo.hni_sub is not None else None,
+            "qib_subscription": ipo.qib_sub if ipo.qib_sub is not None else None,
+            "listing_gain": ipo.listing_gain if ipo.listing_gain is not None else None,
+            "listing_date": ipo.listing_date.isoformat() if ipo.listing_date else None,
+            "best_category": ipo.best_category if ipo.best_category else None
+        })
+    
+    return result
 
 @app.get("/api/stats")
 def get_stats(db: Session = Depends(get_db)):

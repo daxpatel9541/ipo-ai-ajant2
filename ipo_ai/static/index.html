@@ -198,7 +198,7 @@
 
         .ipo-details {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -215,10 +215,63 @@
             font-size: 1.1rem;
         }
 
-        .update-time {
-            font-size: 0.75rem;
+        .best-category {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .category-badge {
+            background: linear-gradient(135deg, var(--primary), #c084fc);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .subscription-data {
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            padding-top: 1rem;
+        }
+
+        .sub-header {
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--text-dim);
-            text-align: right;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .sub-item {
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 8px;
+        }
+
+        .sub-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-value {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         #loading {
@@ -309,7 +362,7 @@
                     card.innerHTML = `
                         <div class="ipo-header">
                             <div class="ipo-name">${ipo.ipo_name}</div>
-                            <div class="ipo-status status-${ipo.status}">${ipo.status}</div>
+                            <div class="ipo-status status-${ipo.status || 'upcoming'}">${ipo.status || 'upcoming'}</div>
                         </div>
                         <div class="ipo-details">
                             <div class="detail-item">
@@ -324,12 +377,41 @@
                                 <span class="label">GMP</span>
                                 <span class="value">${ipo.gmp ? '₹' + ipo.gmp : '₹0'}</span>
                             </div>
+                            ${ipo.listing_gain !== null && ipo.listing_gain !== undefined ? `
                             <div class="detail-item">
                                 <span class="label">Listing Gain</span>
-                                <span class="value" style="color: ${ipo.listing_gain > 0 ? 'var(--success)' : 'inherit'}">${ipo.listing_gain ? ipo.listing_gain + '%' : 'N/A'}</span>
+                                <span class="value" style="color: ${ipo.listing_gain > 0 ? 'var(--success)' : 'inherit'}">${ipo.listing_gain}%</span>
+                            </div>
+                            ` : ''}
+                            ${ipo.listing_date ? `
+                            <div class="detail-item">
+                                <span class="label">Listing Date</span>
+                                <span class="value">${new Date(ipo.listing_date).toLocaleDateString()}</span>
+                            </div>
+                            ` : ''}
+                        </div>
+                        ${ipo.best_category ? `
+                        <div class="best-category">
+                            <span class="category-badge">${ipo.best_category}</span>
+                        </div>
+                        ` : ''}
+                        <div class="subscription-data">
+                            <div class="sub-header">Subscription Rates</div>
+                            <div class="sub-grid">
+                                <div class="sub-item">
+                                    <span class="sub-label">Retail</span>
+                                    <span class="sub-value">${ipo.retail_subscription ? ipo.retail_subscription + 'x' : 'N/A'}</span>
+                                </div>
+                                <div class="sub-item">
+                                    <span class="sub-label">HNI</span>
+                                    <span class="sub-value">${ipo.hni_subscription ? ipo.hni_subscription + 'x' : 'N/A'}</span>
+                                </div>
+                                <div class="sub-item">
+                                    <span class="sub-label">QIB</span>
+                                    <span class="sub-value">${ipo.qib_subscription ? ipo.qib_subscription + 'x' : 'N/A'}</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="update-time">Synced: ${new Date(ipo.scraped_at).toLocaleTimeString()}</div>
                     `;
                     grid.appendChild(card);
                 });

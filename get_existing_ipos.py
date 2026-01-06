@@ -15,18 +15,8 @@ def get_existing_names():
     finally:
         db.close()
     
-    h_path = os.path.join('ipo_ai', 'scraper', 'historical_data.json')
-    h_names = []
-    if os.path.exists(h_path):
-        with open(h_path, 'r') as f:
-            try:
-                data = json.load(f)
-                h_names = [i['ipo_name'] for i in data]
-            except json.JSONDecodeError:
-                pass
-                
-    all_names = list(set(db_names + h_names))
-    return all_names
+    # Only return database names - no mock data
+    return db_names
 
 if __name__ == "__main__":
     names = get_existing_names()

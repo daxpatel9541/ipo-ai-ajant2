@@ -51,7 +51,72 @@
 
         .search-box {
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .ipo-list {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .ipo-card {
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .ipo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .ipo-card.listed {
+            border-left: 4px solid #22c55e;
+        }
+
+        .ipo-card.upcoming {
+            border-left: 4px solid #3b82f6;
         }
 
         input[type="text"] {
@@ -215,6 +280,11 @@
         <h1>IPO AI Agent</h1>
         <p class="subtitle">Real-Time Intelligence & Listing Gain Predictions</p>
 
+        <div class="filter-buttons">
+            <button class="filter-btn" onclick="filterIPOs('listed')">Listed IPOs</button>
+            <button class="filter-btn" onclick="filterIPOs('upcoming')">Upcoming IPOs</button>
+        </div>
+
         <div class="search-box">
             <input type="text" id="ipoInput" placeholder="Enter IPO Name (e.g. Swiggy)..."
                 onkeypress="handleEnter(event)">
@@ -223,57 +293,170 @@
 
         <div id="loading" class="loading" style="display: none;">Analyzing market data...</div>
 
-        <div id="results">
-            <div class="result-card">
-                <div class="header-row">
-                    <span class="ipo-title" id="r_name">IPO Name</span>
-                    <span class="status-badge" id="r_status">Upcoming</span>
-                </div>
+        <div id="results" class="result-card">
+            <div class="header-row">
+                <span class="ipo-title" id="r_name">IPO Name</span>
+                <span class="status-badge" id="r_status">Upcoming</span>
+            </div>
 
-                <div class="grid">
-                    <div class="stat-item">
-                        <span class="stat-label">GMP</span>
-                        <div class="stat-value" id="r_gmp">₹0</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Price High</span>
-                        <div class="stat-value" id="r_price">₹0</div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Issue Size</span>
-                        <div class="stat-value" id="r_size">0 Cr</div>
-                    </div>
+            <div class="grid">
+                <div class="stat-item">
+                    <span class="stat-label">GMP</span>
+                    <div class="stat-value" id="r_gmp">₹0</div>
                 </div>
-
-                <div class="ai-analysis">
-                    <div class="ai-title">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        AI Prediction
-                    </div>
-                    <div class="grid" style="margin-bottom: 1rem;">
-                        <div>
-                            <span class="stat-label">Predicted Gain</span>
-                            <div class="stat-value" style="color: #4ade80;" id="r_gain">0%</div>
-                        </div>
-                        <div>
-                            <span class="stat-label">Recommendation</span>
-                            <div class="stat-value" style="color: var(--accent);" id="r_cat">-</div>
-                        </div>
-                    </div>
-                    <p class="ai-explanation" id="r_expl">AI analysis will appear here.</p>
+                <div class="stat-item">
+                    <span class="stat-label">Price High</span>
+                    <div class="stat-value" id="r_price">₹0</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Issue Size</span>
+                    <div class="stat-value" id="r_size">0 Cr</div>
                 </div>
             </div>
+
+            <div class="ai-analysis">
+                <div class="ai-title">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    AI Prediction
+                </div>
+                <div class="grid" style="margin-bottom: 1rem;">
+                    <div>
+                        <span class="stat-label">Predicted Gain</span>
+                        <div class="stat-value" style="color: #4ade80;" id="r_gain">0%</div>
+                    </div>
+                    <div>
+                        <span class="stat-label">Recommendation</span>
+                        <div class="stat-value" style="color: var(--accent);" id="r_cat">-</div>
+                    </div>
+                </div>
+                <p class="ai-explanation" id="r_expl">AI analysis will appear here.</p>
+            </div>
         </div>
+
+        <div id="ipo-list" class="ipo-list"></div>
 
         <p class="disclaimer">This is AI-based analysis, not financial advice.</p>
     </div>
 
     <script>
+        let currentFilter = null;
+
         function handleEnter(e) {
             if (e.key === 'Enter') searchIPO();
+        }
+
+        async function filterIPOs(status) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentFilter = status;
+            
+            // Hide search results, show loading
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('ipo-list').style.display = 'none';
+
+            try {
+                const response = await fetch(`/api/ipos?status=${status}`);
+                if (!response.ok) throw new Error('Failed to fetch IPOs');
+
+                const ipos = await response.json();
+                displayIPOList(ipos);
+                
+                document.getElementById('ipo-list').style.display = 'block';
+            } catch (error) {
+                alert('Failed to fetch IPOs. Please try again.');
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function displayIPOList(ipos) {
+            const container = document.getElementById('ipo-list');
+            container.innerHTML = '';
+
+            if (ipos.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">No IPOs found for this category.</p>';
+                return;
+            }
+
+            ipos.forEach(ipo => {
+                const card = createIPOCard(ipo);
+                container.appendChild(card);
+            });
+        }
+
+        function createIPOCard(ipo) {
+            const card = document.createElement('div');
+            card.className = `ipo-card ${ipo.status}`;
+            
+            const formatValue = (value, prefix = '', suffix = '') => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `${prefix}${value}${suffix}`;
+            };
+
+            const formatCurrency = (value) => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `₹${value}`;
+            };
+
+            const formatPercentage = (value) => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `${value}%`;
+            };
+
+            card.innerHTML = `
+                <div class="header-row">
+                    <span class="ipo-title">${ipo.ipo_name}</span>
+                    <span class="status-badge" style="background-color: ${ipo.status === 'listed' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(59, 130, 246, 0.1)'}; color: ${ipo.status === 'listed' ? '#22c55e' : '#3b82f6'};">${ipo.status.charAt(0).toUpperCase() + ipo.status.slice(1)}</span>
+                </div>
+                <div class="grid">
+                    <div class="stat-item">
+                        <span class="stat-label">GMP</span>
+                        <div class="stat-value">${formatCurrency(ipo.gmp)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Price High</span>
+                        <div class="stat-value">${formatCurrency(ipo.price_high)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Issue Size</span>
+                        <div class="stat-value">${formatValue(ipo.issue_size, '', ' Cr')}</div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Retail Subscription</span>
+                        <div class="stat-value">${formatValue(ipo.retail_subscription)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">HNI Subscription</span>
+                        <div class="stat-value">${formatValue(ipo.hni_subscription)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">QIB Subscription</span>
+                        <div class="stat-value">${formatValue(ipo.qib_subscription)}</div>
+                    </div>
+                </div>
+                ${ipo.status === 'listed' ? `
+                <div class="grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Listing Gain</span>
+                        <div class="stat-value" style="color: ${ipo.listing_gain >= 0 ? '#22c55e' : '#ef4444'};">${formatPercentage(ipo.listing_gain)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Best Category</span>
+                        <div class="stat-value">${formatValue(ipo.best_category)}</div>
+                    </div>
+                </div>
+                ` : ''}
+            `;
+
+            return card;
         }
 
         async function searchIPO() {
@@ -282,6 +465,7 @@
 
             document.getElementById('loading').style.display = 'block';
             document.getElementById('results').style.display = 'none';
+            document.getElementById('ipo-list').style.display = 'none';
 
             try {
                 const response = await fetch(`/ipo?name=${encodeURIComponent(name)}`);
@@ -290,15 +474,15 @@
                 const data = await response.json();
 
                 // Update UI
-                document.getElementById('r_name').textContent = data.ipo_details.name;
-                document.getElementById('r_status').textContent = data.ipo_details.status;
-                document.getElementById('r_gmp').textContent = `₹${data.ipo_details.current_gmp}`;
-                document.getElementById('r_price').textContent = `₹${data.ipo_details.price_band_high}`;
-                document.getElementById('r_size').textContent = `${data.ipo_details.issue_size} Cr`;
+                document.getElementById('r_name').textContent = data.ipo_name;
+                document.getElementById('r_status').textContent = data.status;
+                document.getElementById('r_gmp').textContent = `₹${data.gmp}`;
+                document.getElementById('r_price').textContent = `₹${data.price_high}`;
+                document.getElementById('r_size').textContent = `${data.issue_size} Cr`;
 
-                document.getElementById('r_gain').textContent = data.ai_analysis.predicted_gain || 'N/A';
-                document.getElementById('r_cat').textContent = data.ai_analysis.recommended_category || 'N/A';
-                document.getElementById('r_expl').textContent = data.ai_analysis.ai_explanation;
+                document.getElementById('r_gain').textContent = data.listing_gain || 'N/A';
+                document.getElementById('r_cat').textContent = data.best_category || 'N/A';
+                document.getElementById('r_expl').textContent = 'AI analysis will appear here.';
 
                 document.getElementById('results').style.display = 'block';
             } catch (error) {

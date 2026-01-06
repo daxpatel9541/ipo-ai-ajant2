@@ -1,6 +1,6 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 import os
@@ -9,6 +9,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from contextlib import asynccontextmanager
+from typing import Optional
 
 from ..db.database import get_db, Base, engine
 from ..db.models import IPOMaster
@@ -47,12 +48,11 @@ async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
     sync_all_sources()
     
-    # Scheduler
+    # Scheduler (only for training, scraping is now continuous via background worker)
     scheduler = BackgroundScheduler()
-    scheduler.add_job(scrape_ipos, 'interval', hours=2)
     scheduler.add_job(preprocess_and_train, 'interval', hours=24)
     scheduler.start()
-    logger.info("Scheduler started.")
+    logger.info("Scheduler started (training only - scraping is continuous).")
 
     # Load initial models (if any)
     try:
@@ -71,106 +71,108 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="IPO AI API", lifespan=lifespan)
 
+# Templates
+templates = Jinja2Templates(directory=os.path.join(os.path.dirname(__file__), "templates"))
+
 # Mount static directory
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 if not os.path.exists(static_dir):
     os.makedirs(static_dir)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+@app.get("/api/ipos")
+def get_ipos(status: Optional[str] = None, name: Optional[str] = None, db: Session = Depends(get_db)):
+    """Fetch IPO records from the database, optionally filtered by status or name, sorted by date."""
+    query = db.query(IPOMaster)
+
+    # Filter by status if provided
+    if status:
+        query = query.filter(IPOMaster.status == status)
+
+    # Filter by name if provided (case-insensitive partial match)
+    if name:
+        query = query.filter(IPOMaster.ipo_name.ilike(f"%{name}%"))
+
+    ipos = query.order_by(IPOMaster.scraped_at.desc()).all()
+
+    # Return IPO details with only allowed fields
+    result = []
+    for ipo in ipos:
+        result.append({
+            "ipo_name": ipo.ipo_name,
+            "status": ipo.status,
+            "gmp": ipo.gmp if ipo.gmp is not None else 0,
+            "price_high": ipo.price_high if ipo.price_high is not None else None,
+            "issue_size": ipo.issue_size if ipo.issue_size is not None else None,
+            "retail_subscription": ipo.retail_sub if ipo.retail_sub is not None else None,
+            "hni_subscription": ipo.hni_sub if ipo.hni_sub is not None else None,
+            "qib_subscription": ipo.qib_sub if ipo.qib_sub is not None else None,
+            "listing_gain": ipo.listing_gain if ipo.listing_gain is not None else None,
+            "best_category": ipo.best_category if ipo.best_category else None
+        })
+
+    return result
+
+@app.get("/api/stats")
+def get_stats(db: Session = Depends(get_db)):
+    """Get quick stats about the database."""
+    total = db.query(IPOMaster).count()
+    upcoming = db.query(IPOMaster).filter(IPOMaster.status == "upcoming").count()
+    listed = db.query(IPOMaster).filter(IPOMaster.status == "listed").count()
+    return {
+        "total_ipos": total,
+        "upcoming": upcoming,
+        "listed": listed,
+        "last_sync": db.query(IPOMaster).order_by(IPOMaster.scraped_at.desc()).first().scraped_at if total > 0 else None
+    }
+
 @app.get("/")
-def home():
-    return FileResponse(os.path.join(static_dir, "index.html"))
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/ipos")
+def get_all_ipos(db: Session = Depends(get_db)):
+    # Fetch all IPOs from DB
+    ipos = db.query(IPOMaster).all()
+
+    # Convert to list of dicts
+    ipo_list = []
+    for ipo in ipos:
+        ipo_list.append({
+            "id": ipo.id,
+            "name": ipo.ipo_name,
+            "status": ipo.status,
+            "issue_size": ipo.issue_size,
+            "price_high": ipo.price_high,
+            "gmp": ipo.gmp,
+            "listing_gain": ipo.listing_gain,
+            "retail_sub": ipo.retail_sub,
+            "hni_sub": ipo.hni_sub,
+            "qib_sub": ipo.qib_sub,
+            "listing_date": ipo.listing_date.isoformat() if ipo.listing_date else None,
+            "best_category": ipo.best_category
+        })
+
+    return {"ipos": ipo_list}
 
 @app.get("/ipo")
 def get_ipo_info(name: str, db: Session = Depends(get_db)):
-    # 1. Fetch IPO from DB
+    # Fetch IPO from DB
     ipo_record = db.query(IPOMaster).filter(IPOMaster.ipo_name.ilike(f"%{name}%")).first()
-    
+
     if not ipo_record:
-        # 404 if not in DB (Startup sync ensures JSON data is already indexed)
         raise HTTPException(status_code=404, detail="IPO not found in database. Please wait for the scraper to pick it up.")
 
-    # 2. Prediction Preparation
-    prediction_result = {
-        "predicted_gain": None,
-        "recommended_category": None,
-        "investment_advice": None,
-        "ai_explanation": "Models are not yet trained."
-    }
-
-    # Features: ['gmp', 'retail_sub', 'hni_sub', 'qib_sub', 'issue_size', 'price_high']
-    features = pd.DataFrame([{
-        'gmp': ipo_record.gmp if ipo_record.gmp else 0,
-        'retail_sub': ipo_record.retail_sub if ipo_record.retail_sub else 0,
-        'hni_sub': ipo_record.hni_sub if ipo_record.hni_sub else 0,
-        'qib_sub': ipo_record.qib_sub if ipo_record.qib_sub else 0,
-        'issue_size': ipo_record.issue_size if ipo_record.issue_size else 0,
-        'price_high': ipo_record.price_high if ipo_record.price_high else 0
-    }])
-
-    # 3. Use Models
-    if not ml_components.get('gain_model'):
-        ml_components['gain_model'] = load_latest_model("ipo_gain")
-        ml_components['imputer'] = load_static_model("imputer.pkl")
-    
-    if ml_components.get('gain_model') and ml_components.get('imputer'):
-        try:
-            imputed_features = ml_components['imputer'].transform(features)
-            
-            # Predict Gain
-            gain_pred = ml_components['gain_model'].predict(imputed_features)[0]
-            prediction_result['predicted_gain'] = f"{gain_pred:.2f}%"
-            
-            # 3.1 Branch Logic by Status
-            if ipo_record.status == 'listed':
-                # Listed IPO: Investment Advice
-                gain = ipo_record.listing_gain if ipo_record.listing_gain is not None else gain_pred
-                if gain > 50:
-                    advice = "Profit Booking / Partial Sell recommended."
-                elif gain > 0:
-                    advice = "Hold for long-term growth or monitor trends."
-                else:
-                    advice = "Weak listing. Avoid or wait for price stabilization."
-                
-                prediction_result['investment_advice'] = advice
-                prediction_result['ai_explanation'] = f"IPO listed with {gain:.2f}% gain. {advice}"
-                # Hide category advice for listed
-                prediction_result.pop('recommended_category', None)
-            else:
-                # Upcoming/Open IPO: Category Recommendation
-                if not ml_components.get('category_model'):
-                    ml_components['category_model'] = load_latest_model("ipo_category")
-                    ml_components['encoder'] = load_static_model("category_encoder.pkl")
-                    
-                if ml_components.get('category_model'):
-                    cat_pred_idx = ml_components['category_model'].predict(imputed_features)[0]
-                    if ml_components.get('encoder'):
-                        cat_pred_label = ml_components['encoder'].inverse_transform([cat_pred_idx])[0]
-                        prediction_result['recommended_category'] = cat_pred_label
-                
-                prediction_result['ai_explanation'] = f"Based on GMP of {ipo_record.gmp} and subscription levels, the AI predicts a listing gain of approx {gain_pred:.2f}%. Recommended category to apply: {prediction_result.get('recommended_category')}."
-                # Hide investment advice for upcoming
-                prediction_result.pop('investment_advice', None)
-
-        except Exception as e:
-            logger.error(f"Prediction error: {e}")
-            prediction_result['ai_explanation'] = "Error generating prediction."
-
-    # 4. Response
+    # Return only allowed fields, with "N/A" for missing values
     return {
-        "ipo_details": {
-            "name": ipo_record.ipo_name,
-            "status": ipo_record.status,
-            "issue_size": ipo_record.issue_size,
-            "price_band_high": ipo_record.price_high,
-            "current_gmp": ipo_record.gmp,
-            "listing_gain": ipo_record.listing_gain,
-            "subscription": {
-                "retail": ipo_record.retail_sub,
-                "hni": ipo_record.hni_sub,
-                "qib": ipo_record.qib_sub
-            }
-        },
-        "ai_analysis": prediction_result,
-        "disclaimer": "This is AI-based analysis, not financial advice. IPO allotment is not guaranteed."
+        "ipo_name": ipo_record.ipo_name or "N/A",
+        "status": ipo_record.status or "N/A",
+        "gmp": ipo_record.gmp if ipo_record.gmp is not None else "N/A",
+        "price_high": ipo_record.price_high if ipo_record.price_high is not None else "N/A",
+        "issue_size": ipo_record.issue_size if ipo_record.issue_size is not None else "N/A",
+        "retail_subscription": ipo_record.retail_sub if ipo_record.retail_sub is not None else "N/A",
+        "hni_subscription": ipo_record.hni_sub if ipo_record.hni_sub is not None else "N/A",
+        "qib_subscription": ipo_record.qib_sub if ipo_record.qib_sub is not None else "N/A",
+        "listing_gain": ipo_record.listing_gain if ipo_record.listing_gain is not None else "N/A",
+        "best_category": ipo_record.best_category or "N/A"
     }
