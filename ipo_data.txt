@@ -1,3 +1,14 @@
+IPO Name: NSDL Database Management Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.768889
+IPO Name: Bigshare Services Pvt.Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.768534
+IPO Name: S.K.D.C.Consultants Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.764911
+IPO Name: Cameo Corporate Services Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.764682
+IPO Name: Integrated Registry Management Services Pvt.Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.764423
+IPO Name: MUFG Intime India Pvt.Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.764090
+IPO Name: Kfin Technologies Ltd., Issue Size: 0.0, Price: 0.0, Status: open, Scraped At: 2026-01-07 08:18:17.763304
+IPO Name: Modern Diagnostic & Research Centre Ltd. IPO LT, Issue Size: 0.0, Price: 90.0, Status: listed, Scraped At: 2026-01-07 08:13:12.596581
+IPO Name: Gabion Technologies India Ltd. IPO O, Issue Size: 0.0, Price: 81.0, Status: upcoming, Scraped At: 2026-01-07 08:11:18.069790
+IPO Name: Victory Electric Vehicles International Ltd. IPO O, Issue Size: 0.0, Price: 41.0, Status: upcoming, Scraped At: 2026-01-07 08:11:18.069009
+IPO Name: Narmadesh Brass Industries Ltd. IPO, Issue Size: 0.0, Price: 515.0, Status: upcoming, Scraped At: 2026-01-07 08:11:18.063040
 IPO Name: GRE Renew Enertech, Issue Size: 0.0, Price: 105.0, Status: listed, Scraped At: 2026-01-07 03:41:57.374323
 IPO Name: Avana Electrosystems, Issue Size: 0.0, Price: 59.0, Status: upcoming, Scraped At: 2026-01-07 03:41:57.373866
 IPO Name: Defrail Technologies, Issue Size: 0.0, Price: 0.0, Status: upcoming, Scraped At: 2026-01-07 03:41:57.373411
