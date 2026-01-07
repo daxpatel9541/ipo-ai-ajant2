@@ -118,10 +118,12 @@ def get_stats(db: Session = Depends(get_db)):
     """Get quick stats about the database."""
     total = db.query(IPOMaster).count()
     upcoming = db.query(IPOMaster).filter(IPOMaster.status == "upcoming").count()
+    open_ipos = db.query(IPOMaster).filter(IPOMaster.status == "open").count()
     listed = db.query(IPOMaster).filter(IPOMaster.status == "listed").count()
     return {
         "total_ipos": total,
         "upcoming": upcoming,
+        "open": open_ipos,
         "listed": listed,
         "last_sync": db.query(IPOMaster).order_by(IPOMaster.scraped_at.desc()).first().scraped_at if total > 0 else None
     }

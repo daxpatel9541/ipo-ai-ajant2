@@ -15,125 +15,184 @@
             --accent: #22d3ee;
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 0;
             min-height: 100vh;
         }
 
-        .container {
+        /* Main container */
+        .app-container {
             width: 100%;
-            max-width: 800px;
-            padding: 2rem;
-            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 3rem;
+        /* Header - Fixed position */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            flex-shrink: 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+        }
+
+        .header-left h1 {
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 0.25rem;
         }
 
-        p.subtitle {
+        .header-left .subtitle {
             color: var(--text-muted);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
         }
 
         .filter-buttons {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            justify-content: center;
+            gap: 0.75rem;
         }
 
         .filter-btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.25rem;
             border: 2px solid var(--primary);
             background-color: transparent;
             color: var(--primary);
             border-radius: 0.75rem;
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
         }
 
-        .filter-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
+        .filter-btn:hover, .filter-btn.active {
             background-color: var(--primary);
             color: white;
         }
 
         .search-section {
-            position: relative;
-            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.5rem;
         }
 
         .search-section input {
-            width: 100%;
-            padding: 1.25rem 1.5rem;
-            font-size: 1.1rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
             background-color: var(--card-bg);
             border: 2px solid #334155;
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             color: white;
+            width: 180px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .search-section input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
         }
 
         .search-section button {
-            position: absolute;
-            right: 0.75rem;
-            top: 0.75rem;
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.25rem;
             background-color: var(--primary);
             color: white;
             border: none;
             border-radius: 0.75rem;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .search-section button:hover {
             background-color: var(--primary-dark);
         }
 
-        .ipo-list {
-            display: none;
-            margin-top: 2rem;
+        /* IPO Grid Container - Scrollable container for cards */
+        .ipo-grid-container {
+            width: 100%;
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
+        .ipo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            overflow-y: auto;
+            padding: 0.5rem 2rem 1rem 2rem;
+            flex: 1;
+        }
+
+        /* Custom scrollbar for the grid */
+        .ipo-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .ipo-grid::-webkit-scrollbar-track {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        .ipo-grid::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        .ipo-grid::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        /* IPO Card */
         .ipo-card {
             background-color: var(--card-bg);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            text-align: left;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: center;
             border: 1px solid #334155;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 0.5s ease-out;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 350px;
+            width: 100%;
+        }
+
+        .ipo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
         }
 
         .ipo-card::before {
@@ -141,8 +200,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
+            right: 0;
+            height: 3px;
             background: linear-gradient(to right, var(--primary), var(--accent));
         }
 
@@ -150,131 +209,391 @@
             border-left: 4px solid #22c55e;
         }
 
+        .ipo-card.open {
+            border-left: 4px solid #f59e0b;
+        }
+
         .ipo-card.upcoming {
             border-left: 4px solid #3b82f6;
         }
 
-        .ipo-card h2 {
-            margin: 0 0 1rem 0;
-            font-size: 1.5rem;
+        /* Card Logo */
+        .card-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-logo-inner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        /* Card Title */
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
             color: var(--text-color);
         }
 
+        /* Status Badge */
         .status-badge {
-            background-color: rgba(34, 211, 238, 0.1);
-            color: var(--accent);
+            display: inline-block;
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
-            font-size: 0.875rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge.listed {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-badge.open {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-badge.upcoming {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Metrics Grid inside card */
+        .card-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .metric-field {
+            background-color: #0f172a;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+        }
+
+        .metric-field label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            margin-bottom: 0.15rem;
+            text-transform: uppercase;
+        }
+
+        .metric-field span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+            word-break: break-word;
+        }
+
+        .metric-field span.highlight {
+            color: var(--accent);
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            margin-top: auto;
+            padding: 0.6rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Loading */
+        .loading {
+            color: var(--accent);
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        /* IPO Detail View */
+        .ipo-detail-view {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+            margin: 0.5rem 2rem 1rem 2rem;
+        }
+
+        .ipo-detail-view::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .detail-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-status {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
         }
 
-        .grid {
+        .detail-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .field {
+        .detail-field {
             background-color: #0f172a;
             padding: 1rem;
             border-radius: 0.75rem;
             border: 1px solid #334155;
         }
 
-        .field label {
+        .detail-field label {
             display: block;
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
-        .field span {
+        .detail-field span {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-color);
         }
 
-        .highlight {
-            color: var(--accent) !important;
+        .detail-field span.highlight {
+            color: var(--accent);
+        }
+
+        .ai-prediction {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.05));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            margin-top: 1.5rem;
+        }
+
+        .ai-prediction-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ai-prediction-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .ai-recommendation {
+            color: var(--accent);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: var(--primary);
+            color: white;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (min-width: 1200px) {
+            .ipo-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .ipo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
             }
         }
 
-        .loading {
-            color: var(--accent);
-            font-weight: 500;
+        @media (max-width: 767px) {
+            .ipo-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .search-section {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .search-section input {
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            .ipo-grid-container {
+                padding: 0.5rem 1rem;
+            }
+            
+            .ipo-card {
+                min-height: 320px;
+            }
+            
+            .detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .detail-title {
+                font-size: 1.5rem;
+            }
         }
 
-        .section {
-            margin-bottom: 2rem;
-        }
-
-        .section h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+        @media (max-width: 480px) {
+            .header-left h1 {
+                font-size: 1.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>IPO AI Agent</h1>
-        <p class="subtitle">Real-Time Intelligence & Listing Gain Predictions</p>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-left">
+                <h1>IPO AI Agent</h1>
+                <p class="subtitle">Real-Time Intelligence & Listing Gain Predictions</p>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn" onclick="filterIPOs('listed')">Listed IPOs</button>
+                <button class="filter-btn" onclick="filterIPOs('open')">Open IPOs</button>
+                <button class="filter-btn" onclick="filterIPOs('upcoming')">Upcoming IPOs</button>
+            </div>
+            <div class="search-section">
+                <input type="text" id="ipoInput" placeholder="Enter IPO Name..." onkeypress="handleEnter(event)">
+                <button onclick="searchIPO()">Analyze</button>
+            </div>
+        </header>
 
-        <div class="filter-buttons">
-            <button class="filter-btn" onclick="filterIPOs('listed')">Listed IPOs</button>
-            <button class="filter-btn" onclick="filterIPOs('upcoming')">Upcoming IPOs</button>
+        <div class="ipo-grid-container">
+            <div id="ipoResults"></div>
+            <div id="ipoGrid" class="ipo-grid"></div>
         </div>
-
-        <div class="search-section">
-            <input type="text" id="ipoInput" placeholder="Enter IPO Name (e.g. Swiggy)..." onkeypress="handleEnter(event)">
-            <button onclick="searchIPO()">Analyze</button>
-        </div>
-        <div id="ipoResults"></div>
-        
-        <!-- IPO List Section -->
-        <div id="ipoList" class="ipo-list"></div>
     </div>
+
     <script>
-        // Global variables
         let currentActiveButton = null;
 
-        // Handle Enter key press in search input
         function handleEnter(event) {
             if (event.key === 'Enter') {
                 searchIPO();
             }
         }
 
-        // Filter IPOs by status
         async function filterIPOs(status) {
             try {
-                // Update active button
                 if (currentActiveButton) {
                     currentActiveButton.classList.remove('active');
                 }
                 event.target.classList.add('active');
                 currentActiveButton = event.target;
 
-                // Clear previous results
+                // Hide detail view, show grid
                 document.getElementById('ipoResults').innerHTML = '';
-                const ipoListDiv = document.getElementById('ipoList');
-                ipoListDiv.innerHTML = '<div class="loading">Loading IPOs...</div>';
-                ipoListDiv.style.display = 'block';
+                document.getElementById('ipoResults').style.display = 'none';
+                document.getElementById('ipoGrid').style.display = 'grid';
+                
+                const gridDiv = document.getElementById('ipoGrid');
+                gridDiv.innerHTML = '<div class="loading">Loading IPOs...</div>';
 
-                // Fetch IPOs from API
                 const response = await fetch(`/api/ipos?status=${status}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -283,86 +602,90 @@
                 const ipos = await response.json();
                 
                 if (ipos.length === 0) {
-                    ipoListDiv.innerHTML = '<div class="loading">No IPOs found for this status.</div>';
+                    gridDiv.innerHTML = '<div class="loading">No IPOs found for this status.</div>';
                     return;
                 }
 
-                // Render IPO cards
-                ipoListDiv.innerHTML = ipos.map(ipo => createIPOCard(ipo, status)).join('');
+                gridDiv.innerHTML = ipos.map(ipo => createIPOCard(ipo, status)).join('');
                 
             } catch (error) {
                 console.error('Error filtering IPOs:', error);
-                document.getElementById('ipoList').innerHTML = '<div class="loading">Error loading IPOs. Please try again.</div>';
+                document.getElementById('ipoGrid').innerHTML = '<div class="loading">Error loading IPOs. Please try again.</div>';
             }
         }
 
-        // Create IPO card HTML
         function createIPOCard(ipo, status) {
-            const statusClass = status === 'listed' ? 'listed' : 'upcoming';
+            const statusClass = status || ipo.status || 'upcoming';
             
+            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#3b82f6', '#ef4444'];
+            const colorIndex = ipo.ipo_name.charCodeAt(0) % colors.length;
+            const logoColor = colors[colorIndex];
+
+            const formatValue = (value, prefix = '', suffix = '') => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `${prefix}${value}${suffix}`;
+            };
+
+            const formatCurrency = (value) => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `₹${value}`;
+            };
+
+            const formatDate = (date) => {
+                if (!date) return 'N/A';
+                return new Date(date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            };
+
             return `
                 <div class="ipo-card ${statusClass}">
-                    <h2>${ipo.ipo_name}</h2>
-                    <span class="status-badge">${ipo.status}</span>
-                    
-                    <div class="grid">
-                        <div class="field">
-                            <label>GMP</label>
-                            <span>${ipo.gmp || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>Price High</label>
-                            <span>${ipo.price_high || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>Issue Size</label>
-                            <span>${ipo.issue_size || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>Retail Subscription</label>
-                            <span>${ipo.retail_subscription || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>HNI Subscription</label>
-                            <span>${ipo.hni_subscription || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>QIB Subscription</label>
-                            <span>${ipo.qib_subscription || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>Listing Gain</label>
-                            <span class="highlight">${ipo.listing_gain || 'N/A'}</span>
-                        </div>
-                        <div class="field">
-                            <label>Best Category</label>
-                            <span>${ipo.best_category || 'N/A'}</span>
+                    <div class="card-logo">
+                        <div class="card-logo-inner" style="background-color: ${logoColor};">
+                            ${ipo.ipo_name.charAt(0).toUpperCase()}
                         </div>
                     </div>
+                    <h3 class="card-title">${ipo.ipo_name}</h3>
+                    <span class="status-badge ${statusClass}">${ipo.status}</span>
+                    
+                    <div class="card-metrics">
+                        <div class="metric-field">
+                            <label>GMP</label>
+                            <span class="highlight">${formatCurrency(ipo.gmp)}</span>
+                        </div>
+                        <div class="metric-field">
+                            <label>Price High</label>
+                            <span>${formatCurrency(ipo.price_high)}</span>
+                        </div>
+                        <div class="metric-field">
+                            <label>Issue Size</label>
+                            <span>${formatValue(ipo.issue_size, '', ' Cr')}</span>
+                        </div>
+                        <div class="metric-field">
+                            <label>Listing Date</label>
+                            <span>${formatDate(ipo.listing_date)}</span>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-btn" onclick="viewIPO('${encodeURIComponent(ipo.ipo_name)}')">View Details</button>
                 </div>
             `;
         }
 
-        // Search for IPO by name
-        async function searchIPO() {
-            const ipoInput = document.getElementById('ipoInput');
-            const ipoName = ipoInput.value.trim();
+        async function viewIPO(encodedName) {
+            const ipoName = decodeURIComponent(encodedName);
             
-            if (!ipoName) {
-                alert('Please enter an IPO name to search.');
-                return;
-            }
-
-            // Clear filter button active state
+            // Clear active button
             if (currentActiveButton) {
                 currentActiveButton.classList.remove('active');
                 currentActiveButton = null;
             }
 
-            // Hide IPO list and show search results
-            document.getElementById('ipoList').style.display = 'none';
+            // Hide grid, show loading in the results div
+            const gridDiv = document.getElementById('ipoGrid');
             const resultsDiv = document.getElementById('ipoResults');
-            resultsDiv.innerHTML = '<div class="loading">Searching for IPO...</div>';
+            
+            gridDiv.style.display = 'none';
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = '<div class="loading">Loading IPO details...</div>';
 
             try {
                 const response = await fetch(`/api/ipos?name=${encodeURIComponent(ipoName)}`);
@@ -373,22 +696,137 @@
                 const data = await response.json();
                 
                 if (!data || data.length === 0) {
-                    resultsDiv.innerHTML = '<div class="loading">IPO not found. Please check the name and try again.</div>';
+                    resultsDiv.innerHTML = '<div class="loading">IPO not found. Please try again.</div>';
                     return;
                 }
 
-                // Display search result
-                resultsDiv.innerHTML = `
-                    <div class="section">
-                        <h3>Search Result for "${ipoName}"</h3>
-                        ${data.map(ipo => createIPOCard(ipo, ipo.status)).join('')}
-                    </div>
-                `;
+                // Get first IPO from results
+                const ipo = data[0];
+                resultsDiv.innerHTML = createIPODetailView(ipo);
                 
             } catch (error) {
-                console.error('Error searching IPO:', error);
-                resultsDiv.innerHTML = '<div class="loading">Error searching for IPO. Please try again.</div>';
+                console.error('Error loading IPO details:', error);
+                resultsDiv.innerHTML = '<div class="loading">Error loading IPO details. Please try again.</div>';
             }
+        }
+
+        function createIPODetailView(ipo) {
+            const statusClass = ipo.status || 'upcoming';
+            
+            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#3b82f6', '#ef4444'];
+            const colorIndex = ipo.ipo_name.charCodeAt(0) % colors.length;
+            const logoColor = colors[colorIndex];
+
+            const formatValue = (value, prefix = '', suffix = '') => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `${prefix}${value}${suffix}`;
+            };
+
+            const formatCurrency = (value) => {
+                if (value === null || value === undefined || value === 'N/A') return 'N/A';
+                return `₹${value}`;
+            };
+
+            const formatDate = (date) => {
+                if (!date) return 'N/A';
+                return new Date(date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+            };
+
+            return `
+                <button class="back-btn" onclick="goBack()">
+                    ← Back to IPO List
+                </button>
+                <div class="ipo-detail-view">
+                    <div class="detail-header">
+                        <div>
+                            <h2 class="detail-title">${ipo.ipo_name}</h2>
+                            <span class="status-badge ${statusClass}" style="font-size: 0.9rem; padding: 0.35rem 1rem;">${ipo.status}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-grid">
+                        <div class="detail-field">
+                            <label>Grey Market Premium (GMP)</label>
+                            <span class="highlight">${formatCurrency(ipo.gmp)}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>Price Band High</label>
+                            <span>${formatCurrency(ipo.price_high)}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>Issue Size</label>
+                            <span>${formatValue(ipo.issue_size, '', ' Cr')}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>Listing Date</label>
+                            <span>${formatDate(ipo.listing_date)}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>Retail Subscription</label>
+                            <span>${formatValue(ipo.retail_sub, '', 'x') || 'N/A'}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>HNI Subscription</label>
+                            <span>${formatValue(ipo.hni_sub, '', 'x') || 'N/A'}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>QIB Subscription</label>
+                            <span>${formatValue(ipo.qib_sub, '', 'x') || 'N/A'}</span>
+                        </div>
+                        <div class="detail-field">
+                            <label>Listing Gain</label>
+                            <span class="highlight">${formatValue(ipo.listing_gain, '', '%') || 'N/A'}</span>
+                        </div>
+                    </div>
+                    
+                    ${ipo.best_category ? `
+                    <div class="ai-prediction">
+                        <div class="ai-prediction-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            AI Analysis
+                        </div>
+                        <div class="ai-prediction-grid">
+                            <div>
+                                <label style="color: var(--text-muted); font-size: 0.8rem;">Best Category</label>
+                                <div class="ai-prediction-value ai-recommendation">${ipo.best_category}</div>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-color); line-height: 1.6; margin-top: 0.5rem;">
+                            Based on market analysis, <strong>${ipo.best_category}</strong> investors have the best chance of receiving allocation in this IPO given the subscription levels and market conditions.
+                        </p>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function goBack() {
+            const gridDiv = document.getElementById('ipoGrid');
+            const resultsDiv = document.getElementById('ipoResults');
+            
+            resultsDiv.innerHTML = '';
+            resultsDiv.style.display = 'none';
+            gridDiv.style.display = 'grid';
+            
+            // Scroll grid to top
+            gridDiv.scrollTop = 0;
+        }
+
+        function searchIPOFromCard(name) {
+            viewIPO(encodeURIComponent(name));
+        }
+
+        async function searchIPO() {
+            const ipoName = document.getElementById('ipoInput').value.trim();
+            
+            if (!ipoName) {
+                alert('Please enter an IPO name to search.');
+                return;
+            }
+
+            viewIPO(encodeURIComponent(ipoName));
         }
     </script>
 </body>

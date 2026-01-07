@@ -34,6 +34,136 @@ def get_session():
     })
     return session
 
+def scrape_with_requests(urls):
+    """Fallback scraping method using requests and BeautifulSoup only (no Selenium)."""
+    logger.info(f"Starting requests-based scraping for {len(urls)} URLs...")
+    
+    session = get_session()
+    all_data = []
+    total_new = 0
+    total_updated = 0
+    
+    for category, url in urls.items():
+        logger.info(f"Scraping category '{category}' from {url}...")
+        try:
+            response = session.get(url, timeout=30)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Try to extract data (same logic as Selenium version but using requests response)
+            extracted_data = []
+            
+            # Try JSON extraction first
+            next_data_script = soup.find('script', id='__NEXT_DATA__')
+            if next_data_script:
+                try:
+                    data = json.loads(next_data_script.string or "{}")
+                    props = data.get('props', {})
+                    page_props = props.get('pageProps', {})
+                    result_data = page_props.get('resultData', {})
+                    report_data = result_data.get('reportData') or result_data.get('reportInfo') or result_data.get('reportItems') or []
+                    
+                    for item in report_data:
+                        name = item.get('company_name') or item.get('issuer_company_name') or item.get('ipo_name')
+                        if not name: continue
+                        
+                        extracted_data.append({
+                            "ipo_name": name,
+                            "issue_size": float(item.get('total_issue_amount_rs_cr') or item.get('issue_size_cr') or item.get('size') or 0),
+                            "price_high": float(item.get('issue_price_rs') or item.get('issue_price') or item.get('price_high') or 0),
+                            "gmp": float(item.get('gmp') or item.get('grey_market_premium') or 0),
+                            "listing_gain": float(item.get('listing_gain') or 0),
+                            "retail_sub": float(item.get('retail_subscription') or item.get('retail_sub') or 0),
+                            "hni_sub": float(item.get('hni_subscription') or item.get('hni_sub') or 0),
+                            "qib_sub": float(item.get('qib_subscription') or item.get('qib_sub') or 0),
+                            "best_category": item.get('best_category') or item.get('category') or "",
+                            "listing_date": None,
+                            "status": "upcoming",
+                            "scraped_at": datetime.utcnow()
+                        })
+                except Exception as e:
+                    logger.debug(f"JSON parse skipped for {category}: {e}")
+            
+            # Fallback to table parsing
+            if not extracted_data:
+                table = soup.find('table')
+                if table:
+                    rows = table.find_all('tr')
+                    if len(rows) > 1:
+                        headers = [h.text.strip().lower() for h in rows[0].find_all(['th', 'td'])]
+                        h_map = {
+                            'name': next((i for i, h in enumerate(headers) if 'company' in h or 'issuer' in h or 'ipo' in h), 0),
+                            'price': next((i for i, h in enumerate(headers) if 'price' in h), -1),
+                            'size': next((i for i, h in enumerate(headers) if 'size' in h), -1),
+                            'gmp': next((i for i, h in enumerate(headers) if 'gmp' in h or 'grey' in h), -1),
+                        }
+                        
+                        for row in rows[1:]:
+                            cols = row.find_all('td')
+                            if not cols or len(cols) < 2: continue
+                            try:
+                                name = cols[h_map['name']].text.strip().split('\n')[0]
+                                if not name: continue
+                                
+                                price_val = 0.0
+                                if h_map['price'] != -1:
+                                    p_txt = cols[h_map['price']].text.strip().split('-')[-1]
+                                    p_cln = ''.join(c for c in p_txt if c.isdigit() or c == '.')
+                                    if p_cln: price_val = float(p_cln)
+                                
+                                size_val = 0.0
+                                if h_map['size'] != -1:
+                                    s_txt = cols[h_map['size']].text.strip()
+                                    s_cln = ''.join(c for c in s_txt if c.isdigit() or c == '.')
+                                    if s_cln: size_val = float(s_cln)
+                                
+                                gmp_val = 0.0
+                                if h_map['gmp'] != -1:
+                                    g_txt = cols[h_map['gmp']].text.strip()
+                                    g_cln = ''.join(c for c in g_txt if c.isdigit() or c == '.' or c == '-')
+                                    if g_cln and g_cln != '-': gmp_val = float(g_cln)
+                                
+                                extracted_data.append({
+                                    "ipo_name": name,
+                                    "issue_size": size_val,
+                                    "price_high": price_val,
+                                    "gmp": gmp_val,
+                                    "listing_gain": 0.0,
+                                    "retail_sub": 0.0,
+                                    "hni_sub": 0.0,
+                                    "qib_sub": 0.0,
+                                    "best_category": "",
+                                    "listing_date": None,
+                                    "status": "upcoming",
+                                    "scraped_at": datetime.utcnow()
+                                })
+                            except: continue
+            
+            if extracted_data:
+                added, updated = save_to_db(extracted_data)
+                total_new += added
+                total_updated += updated
+                all_data.extend(extracted_data)
+            
+            time.sleep(random.uniform(1, 2))
+            
+        except Exception as e:
+            logger.error(f"Error scraping {category}: {e}")
+    
+    # Write to text file
+    text_file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'ipo_data.txt')
+    db: Session = SessionLocal()
+    try:
+        result = db.execute(text("SELECT ipo_name, issue_size, price_high, status, scraped_at FROM ipo_master ORDER BY scraped_at DESC")).fetchall()
+        with open(text_file_path, 'w') as f:
+            for row in result:
+                f.write(f"IPO Name: {row[0]}, Issue Size: {row[1]}, Price: {row[2]}, Status: {row[3]}, Scraped At: {row[4]}\n")
+    finally:
+        db.close()
+    
+    logger.info(f"Requests-based scrape complete. Added: {total_new}, Updated: {total_updated}")
+    return all_data
+
 def scrape_ipos(urls=None):
     all_data = []
     if not urls:
@@ -61,10 +191,74 @@ def scrape_ipos(urls=None):
     
     logger.info(f"Starting Selenium-based scraping for {len(urls)} URLs...")
     
-    # Setup Selenium
+    # Setup Selenium with better error handling
     options = Options()
-    options.add_argument("--headless")  # Run in background
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-infobars")
+    options.add_argument("--start-maximized")
+    
+    # Try to initialize Chrome with multiple fallback methods
+    driver = None
+    selenium_error = None
+    
+    # Method 1: Try with ChromeDriverManager (wrapped in try-except)
+    try:
+        logger.info("Attempting to initialize ChromeDriver via webdriver-manager...")
+        chromedriver_path = None
+        try:
+            # This can throw WinError 193 if the downloaded driver is incompatible
+            chromedriver_path = ChromeDriverManager().install()
+        except Exception as cdm_error:
+            logger.warning(f"ChromeDriverManager install failed: {cdm_error}")
+            chromedriver_path = None
+        
+        if chromedriver_path:
+            service = Service(executable_path=chromedriver_path)
+            driver = webdriver.Chrome(service=service, options=options)
+            logger.info("ChromeDriver initialized successfully via webdriver-manager")
+    except Exception as e1:
+        selenium_error = e1
+        logger.warning(f"Method 1 (webdriver-manager) failed: {e1}")
+    
+    # Method 2: Try direct Chrome without specifying service
+    if driver is None:
+        try:
+            logger.info("Attempting direct Chrome initialization...")
+            driver = webdriver.Chrome(options=options)
+            logger.info("Chrome initialized successfully via direct method")
+        except Exception as e2:
+            selenium_error = e2
+            logger.warning(f"Method 2 (direct) failed: {e2}")
+    
+    # Method 3: Try finding system chromedriver
+    if driver is None:
+        try:
+            logger.info("Attempting to find system ChromeDriver...")
+            import subprocess
+            result = subprocess.run(['where', 'chromedriver'], capture_output=True, text=True)
+            if result.returncode == 0:
+                chromedriver_path = result.stdout.strip().split('\n')[0]
+                logger.info(f"Found system chromedriver at: {chromedriver_path}")
+                service = Service(executable_path=chromedriver_path)
+                driver = webdriver.Chrome(service=service, options=options)
+                logger.info("Chrome initialized successfully via system chromedriver")
+            else:
+                raise Exception("ChromeDriver not found in system PATH")
+        except Exception as e3:
+            selenium_error = e3
+            logger.warning(f"Method 3 (system) failed: {e3}")
+    
+    # Fallback: Use requests-only scraping
+    if driver is None:
+        logger.error(f"All ChromeDriver methods failed. Last error: {selenium_error}")
+        logger.info("Falling back to requests-based scraping (no Selenium)")
+        return scrape_with_requests(urls)
+        
     driver.implicitly_wait(10)
     
     total_new = 0
@@ -119,9 +313,24 @@ def scrape_ipos(urls=None):
                         
                         # Determine status based on scraped data signals
                         status = "upcoming"  # default
-                        if listing_gain or listing_date:
+
+                        # Check for listed status first (has listing date in past OR has listing gain)
+                        if listing_gain or (listing_date and listing_date <= datetime.now()):
                             status = "listed"
-                        elif (retail_sub or hni_sub or qib_sub) and str(item.get('status', '')).lower() in ['open', 'ongoing']:
+                        # Check for open status (has future listing date OR has subscription data)
+                        elif listing_date and listing_date > datetime.now():
+                            # IPO has a future listing date - it's currently open for subscription
+                            status = "open"
+                        elif (retail_sub > 0 or hni_sub > 0 or qib_sub > 0):
+                            # Has subscription data - it's open
+                            item_status = str(item.get('status', '')).lower()
+                            if any(term in item_status for term in ['open', 'ongoing', 'active', 'live', 'apply', 'bid']):
+                                status = "open"
+                        elif 'open' in str(item.get('status', '')).lower() or 'ongoing' in str(item.get('status', '')).lower():
+                            status = "open"
+
+                        # Override status if scraped from open IPO URLs
+                        if 'open' in category.lower() and status != "listed":
                             status = "open"
 
                         extracted_data.append({
@@ -229,9 +438,28 @@ def scrape_ipos(urls=None):
 
                                 # Determine status based on scraped data signals
                                 status = "upcoming"  # default
-                                if gain_val or listing_date:
+
+                                # Check for listed status first (has listing date in past OR has listing gain)
+                                if gain_val > 0 or (listing_date and listing_date <= datetime.now()):
                                     status = "listed"
-                                elif (retail_val or hni_val or qib_val) and (h_map['status'] != -1 and "open" in cols[h_map['status']].text.strip().lower()):
+                                # Check for open status (has future listing date OR has subscription data)
+                                elif listing_date and listing_date > datetime.now():
+                                    # IPO has a future listing date - it's currently open for subscription
+                                    status = "open"
+                                elif (retail_val > 0 or hni_val > 0 or qib_val > 0):
+                                    # Has subscription data - it's open
+                                    status_idx = h_map.get('status', -1)
+                                    if status_idx != -1:
+                                        item_status = cols[status_idx].text.strip().lower()
+                                        if any(term in item_status for term in ['open', 'ongoing', 'active', 'live', 'apply', 'bid']):
+                                            status = "open"
+                                    else:
+                                        status = "open"
+                                elif h_map['status'] != -1 and "open" in cols[h_map['status']].text.strip().lower():
+                                    status = "open"
+
+                                # Override status if scraped from open IPO URLs
+                                if 'open' in category.lower() and status != "listed":
                                     status = "open"
 
                                 extracted_data.append({

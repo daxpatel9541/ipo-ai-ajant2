@@ -1,3 +1,11 @@
+IPO Name: GRE Renew Enertech, Issue Size: 0.0, Price: 105.0, Status: listed, Scraped At: 2026-01-07 03:41:57.374323
+IPO Name: Avana Electrosystems, Issue Size: 0.0, Price: 59.0, Status: upcoming, Scraped At: 2026-01-07 03:41:57.373866
+IPO Name: Defrail Technologies, Issue Size: 0.0, Price: 0.0, Status: upcoming, Scraped At: 2026-01-07 03:41:57.373411
+IPO Name: Victory Electric Vehicles, Issue Size: 0.0, Price: 41.0, Status: upcoming, Scraped At: 2026-01-07 03:41:57.372941
+IPO Name: Yajur Fibres, Issue Size: 0.0, Price: 174.0, Status: listed, Scraped At: 2026-01-07 03:41:57.372453
+IPO Name: Gabion Technologies, Issue Size: 0.0, Price: 81.0, Status: listed, Scraped At: 2026-01-07 03:41:57.371884
+IPO Name: Modern Diagnostic, Issue Size: 0.0, Price: 90.0, Status: listed, Scraped At: 2026-01-07 03:41:57.371288
+IPO Name: Bharat Coking Coal (BCCL), Issue Size: 0.0, Price: 23.0, Status: listed, Scraped At: 2026-01-07 03:41:57.369903
 IPO Name: Shri Venkatesh Refineries Ltd. IPO, Issue Size: 0.0, Price: 40.0, Status: listed, Scraped At: 2026-01-05 10:13:50.464788
 IPO Name: Promax Power Ltd. IPO, Issue Size: 0.0, Price: 10.0, Status: listed, Scraped At: 2026-01-05 10:13:50.464190
 IPO Name: Bombay Metrics Supply Chain Ltd. IPO, Issue Size: 0.0, Price: 93.0, Status: listed, Scraped At: 2026-01-05 10:13:50.463700
